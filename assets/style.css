@@ -209,3 +209,10 @@ footer .cols a{display:inline-block;padding-block:4px}
   .callbar a.call{background:var(--accent);border-color:var(--accent)}
   body.has-callbar{padding-bottom:84px}
 }
+/* Store entry badges */
+.age{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;font:700 .8rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:999px}
+.age.all{background:#17803A;color:#fff}
+.age.adult{background:var(--sign);color:var(--sign-ink);box-shadow:inset 0 0 0 2px var(--accent)}
+.page-head .age{font-size:.95rem;padding:10px 16px;margin-top:16px}
+.sign .age-s{display:block;font-style:normal;font-weight:700;font-size:.78rem;margin-top:2px;letter-spacing:.08em;text-transform:uppercase;color:#7BE39A}
+.sign .age-s.adult{color:#FF8A93}
