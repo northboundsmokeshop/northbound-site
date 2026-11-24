@@ -110,13 +110,28 @@ address{font-style:normal}
 .others{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 
 /* Products */
-.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 36px}
-.cats h3{font-size:1.35rem;margin-bottom:6px}
-.cats h3 a{text-decoration:none}
-.cats h3 a:hover{color:var(--accent)}
-.cats p{color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cat{position:relative;display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px 20px 20px;text-decoration:none;color:var(--ink);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.cat::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.cat-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.cat-ico{width:52px;height:52px;border-radius:12px;background:var(--sign);color:var(--sign-ink);display:grid;place-items:center;transition:background-color .25s ease,transform .25s ease}
+.cat-ico svg{width:28px;height:28px}
+.cat-n{font:800 2rem/1 var(--display);color:var(--line);letter-spacing:.02em;transition:color .25s ease}
+.cat-tag{align-self:flex-start;font:700 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;background:#17803A;color:#fff;padding:6px 9px;border-radius:999px}
+.cat h3{font-size:1.25rem;line-height:1.1}
+.cat p{color:var(--muted);font-size:.95rem;flex:1}
+.cat-more{font:700 .85rem/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;gap:6px}
+.cat-more span{transition:transform .25s ease}
+.cat:hover,.cat:focus-visible{border-color:var(--accent);box-shadow:0 14px 30px rgba(0,0,0,.12);transform:translateY(-5px)}
+.cat:hover::before,.cat:focus-visible::before{transform:scaleX(1)}
+.cat:hover .cat-ico,.cat:focus-visible .cat-ico{background:var(--accent);transform:rotate(-6deg)}
+.cat:hover .cat-n,.cat:focus-visible .cat-n{color:var(--accent)}
+.cat:hover .cat-more span,.cat:focus-visible .cat-more span{transform:translateX(5px)}
+@media (max-width:980px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cats{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cat,.cat::before,.cat-ico,.cat-more span{transition:none}.cat:hover{transform:none}}
 .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
-.why div{min-width:0}
+.why div{min-width:0;border-left:4px solid var(--accent);padding:4px 0 4px 16px}
 .why strong{display:block;font:700 1.15rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.03em}
 .prod{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px 40px;padding-block:34px;border-top:1px solid var(--line);scroll-margin-top:20px}
 .prod h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
@@ -245,9 +260,3 @@ footer .cols a{display:inline-block;padding-block:4px}
 @keyframes nb-flicker{0%{opacity:0}8%{opacity:1}12%{opacity:.2}18%{opacity:1}24%{opacity:.4}30%,100%{opacity:1}}
 @keyframes nb-glow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 10px currentColor}}
 @keyframes nb-blink{0%,66%{opacity:1}67%,83%{opacity:.25}84%,100%{opacity:1}}
-/* Custom cursor ring (mouse only; real cursor stays visible) */
-.nb-cursor{position:fixed;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border:2px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:width .2s ease,height .2s ease,margin .2s ease,background-color .2s ease,opacity .2s ease;will-change:transform}
-.nb-cursor.on{opacity:1}
-.nb-cursor.big{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(190,21,34,.12)}
-.nb-cursor.down{width:22px;height:22px;margin:-11px 0 0 -11px}
-@media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.nb-cursor{display:none}}
