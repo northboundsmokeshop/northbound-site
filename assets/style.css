@@ -214,5 +214,5 @@ footer .cols a{display:inline-block;padding-block:4px}
 .age.all{background:#17803A;color:#fff}
 .age.adult{background:var(--sign);color:var(--sign-ink);box-shadow:inset 0 0 0 2px var(--accent)}
 .page-head .age{font-size:.95rem;padding:10px 16px;margin-top:16px}
-.sign .age-s{display:block;font-style:normal;font-weight:700;font-size:.78rem;margin-top:2px;letter-spacing:.08em;text-transform:uppercase;color:#7BE39A}
-.sign .age-s.adult{color:#FF8A93}
+.sign li span.age-s{font:700 .95rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;opacity:1;color:#7BE39A}
+.sign li span.age-s.adult{color:#FF8A93}
