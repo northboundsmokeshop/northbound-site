@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/northbou/public_html/
+    - /bin/cp -R index.html .htaccess robots.txt sitemap.xml assets img about contact products vape-shop-downtown-fort-mcmurray vape-shop-thickwood-fort-mcmurray vape-shop-timberlea-fort-mcmurray $DEPLOYPATH
