@@ -217,3 +217,37 @@ footer .cols a{display:inline-block;padding-block:4px}
 .page-head .age{font-size:.95rem;padding:10px 16px;margin-top:16px}
 .sign li span.age-s{font:700 .95rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;opacity:1;color:#7BE39A}
 .sign li span.age-s.adult{color:#FF8A93}
+/* ===== Effects (all disabled when the visitor prefers reduced motion) ===== */
+@media (prefers-reduced-motion: no-preference){
+  /* Reveal on scroll */
+  .fx .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .fx .reveal.in{opacity:1;transform:none}
+  /* Hover: cards lift, photos zoom, buttons nudge */
+  .loc{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .loc:hover{transform:translateY(-6px);box-shadow:0 16px 32px rgba(0,0,0,.14);border-color:var(--accent)}
+  .gallery figure,.storefront,.feature-img,.prod-img{overflow:hidden;border-radius:4px}
+  .gallery img,.storefront img,.feature-img img,.prod-img img{transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .6s ease}
+  .gallery figure:hover img,.storefront:hover img,.feature-img:hover img,.prod-img:hover img{transform:scale(1.06);filter:saturate(1.15)}
+  .btn{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.15)}
+  /* Animated sign: rows switch on one by one, squares blink like neon */
+  .fx .sign li{opacity:0;transform:translateX(-14px);animation:nb-on .55s cubic-bezier(.2,.7,.2,1) forwards}
+  .fx .sign li:nth-child(1){animation-delay:.35s}
+  .fx .sign li:nth-child(2){animation-delay:.6s}
+  .fx .sign li:nth-child(3){animation-delay:.85s}
+  .fx .sign .route{animation:nb-flicker 1.4s linear .1s both}
+  .sign li span.age-s{animation:nb-glow 2.8s ease-in-out 1.4s infinite}
+  .squares i{animation:nb-blink 3s steps(1,end) infinite}
+  .squares i:nth-child(2){animation-delay:.5s}
+  .squares i:nth-child(3){animation-delay:1s}
+}
+@keyframes nb-on{to{opacity:1;transform:none}}
+@keyframes nb-flicker{0%{opacity:0}8%{opacity:1}12%{opacity:.2}18%{opacity:1}24%{opacity:.4}30%,100%{opacity:1}}
+@keyframes nb-glow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 10px currentColor}}
+@keyframes nb-blink{0%,66%{opacity:1}67%,83%{opacity:.25}84%,100%{opacity:1}}
+/* Custom cursor ring (mouse only; real cursor stays visible) */
+.nb-cursor{position:fixed;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border:2px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transition:width .2s ease,height .2s ease,margin .2s ease,background-color .2s ease,opacity .2s ease;will-change:transform}
+.nb-cursor.on{opacity:1}
+.nb-cursor.big{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(190,21,34,.12)}
+.nb-cursor.down{width:22px;height:22px;margin:-11px 0 0 -11px}
+@media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.nb-cursor{display:none}}
